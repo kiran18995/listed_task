@@ -14,12 +14,12 @@ getting from the API response
 
 
 ### Displaying Greetings from Local Time
-![Screenshot_1689252874](https://github.com/kiran18995/listed_task/assets/48232762/7fe6394b-0153-4dea-8eb5-f884115697cc)
+<img src="https://github.com/kiran18995/listed_task/assets/48232762/7fe6394b-0153-4dea-8eb5-f884115697cc" alt="My Image" width="200" height="400">
 
 I have added greetings that will show from local time.
 
 ### Displaying Name from API
-![Screenshot_1689252874](https://github.com/kiran18995/listed_task/assets/48232762/7fe6394b-0153-4dea-8eb5-f884115697cc)
+<img src="https://github.com/kiran18995/listed_task/assets/48232762/7fe6394b-0153-4dea-8eb5-f884115697cc" alt="My Image" width="200" height="400">
 
 The name which is showing here is hardcoded because the name is not available in the given API.
 
@@ -27,10 +27,11 @@ The name which is showing here is hardcoded because the name is not available in
 
 The chart used here is "mpandroidchart." find below the link for the library.
 
-link: https://github.com/PhilJay/MPAndroidChart
+Link: https://github.com/PhilJay/MPAndroidChart
 
 ### Adding Tabs and ListView
-![Screenshot_1689253209](https://github.com/kiran18995/listed_task/assets/48232762/3a16c1bd-04d3-4b1c-b295-c0c0b369c9f6)![Screenshot_1689253211](https://github.com/kiran18995/listed_task/assets/48232762/63efb34f-17a4-40f6-95bd-b49197162bc0)
+<img src="https://github.com/kiran18995/listed_task/assets/48232762/3a16c1bd-04d3-4b1c-b295-c0c0b369c9f6" alt="My Image" width="200" height="400">
+<img src="https://github.com/kiran18995/listed_task/assets/48232762/63efb34f-17a4-40f6-95bd-b49197162bc0" alt="My Image" width="200" height="400">
 
 I have used a recycler view and two text views for the tabs as it is showing only 5 lists. If the user wants more user will click on view all links, so I made minimal complexity.
 
