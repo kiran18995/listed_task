@@ -9,26 +9,20 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.Date
 
 private const val BASE_URL = "https://api.inopenapp.com/"
+
 object RetrofitInstance {
 
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(HeaderInterceptor())
-        .build()
+    private val client = OkHttpClient.Builder().addInterceptor(HeaderInterceptor()).build()
 
-    private val moshi = Moshi.Builder()
-        .add(Date::class.java, Rfc3339DateJsonAdapter())
-        .addLast(KotlinJsonAdapterFactory())
-        .build()
+    private val moshi = Moshi.Builder().add(Date::class.java, Rfc3339DateJsonAdapter())
+        .addLast(KotlinJsonAdapterFactory()).build()
 
     /**
      * Use the Retrofit builder to build a retrofit object using a Moshi converter.
      */
     private val retrofit by lazy {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
-            .build()
+        Retrofit.Builder().baseUrl(BASE_URL).client(client)
+            .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
     }
 
     val api: DashboardApi by lazy {

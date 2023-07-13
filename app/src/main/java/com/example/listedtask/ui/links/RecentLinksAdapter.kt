@@ -16,6 +16,7 @@ private const val DELIMITER = "T"
 private const val DATE_PATTERN = "yyyy-MM-dd"
 private const val DEFAULT_DATE = "2022-08-09"
 private const val DATE_OF_PATTERN = "dd MMM yyyy"
+
 class RecentLinksAdapter(
     private val context: Context,
     private val RecentLinksList: List<RecentLinks>,
@@ -53,10 +54,11 @@ class RecentLinksAdapter(
             linkDate.text = filterDate(recentLinksList.createdAt)
             noClicks.text = recentLinksList.totalClicks.toString()
             linkUrl.text = recentLinksList.smartLink
-            copyLink.setOnClickListener{
+            copyLink.setOnClickListener {
                 itemClickListener.onItemClick(recentLinksList.smartLink)
             }
         }
+
         private fun filterDate(timestamp: String?): String {
             val dateTime = timestamp?.split(DELIMITER)?.toTypedArray()
             val format = DateTimeFormatter.ofPattern(DATE_PATTERN)

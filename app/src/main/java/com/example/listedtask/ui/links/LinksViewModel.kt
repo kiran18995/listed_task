@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.listedtask.api.RetrofitInstance
 import com.example.listedtask.models.Dashboard
 import kotlinx.coroutines.launch
-import java.util.Objects
 
 class LinksViewModel : ViewModel() {
 
@@ -21,7 +20,7 @@ class LinksViewModel : ViewModel() {
 
     private val _dashBoardData: MutableLiveData<Dashboard> = MutableLiveData<Dashboard>()
 
-    val dashboard:LiveData<Dashboard>
+    val dashboard: LiveData<Dashboard>
         get() = _dashBoardData
 
 
@@ -30,7 +29,7 @@ class LinksViewModel : ViewModel() {
             _isLoading.value = true
             try {
                 _dashBoardData.value = RetrofitInstance.api.getData()
-            } catch (e:Exception) {
+            } catch (e: Exception) {
                 _errorMessage.value = e.message
             } finally {
                 _isLoading.value = false

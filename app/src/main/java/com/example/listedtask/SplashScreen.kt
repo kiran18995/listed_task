@@ -1,10 +1,12 @@
 package com.example.listedtask
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
     private val splashDelay: Long = 3000
 

@@ -11,12 +11,12 @@ import com.bumptech.glide.Glide
 import com.example.listedtask.R
 import com.example.listedtask.models.TopLinks
 import java.time.format.DateTimeFormatter
-import kotlin.reflect.jvm.internal.impl.renderer.DescriptorRenderer.ValueParametersHandler.DEFAULT
 
 private const val DELIMITER = "T"
 private const val DATE_PATTERN = "yyyy-MM-dd"
 private const val DEFAULT_DATE = "2022-08-09"
 private const val DATE_OF_PATTERN = "dd MMM yyyy"
+
 class TopLinksAdapter(
     private val context: Context,
     private val topLinksList: List<TopLinks>,
@@ -54,10 +54,11 @@ class TopLinksAdapter(
             linkDate.text = filterDate(topLinksList.createdAt)
             noClicks.text = topLinksList.totalClicks.toString()
             linkUrl.text = topLinksList.smartLink
-            copyLink.setOnClickListener{
+            copyLink.setOnClickListener {
                 itemClickListener.onItemClick(topLinksList.smartLink)
             }
         }
+
         private fun filterDate(timestamp: String?): String {
             val dateTime = timestamp?.split(DELIMITER)?.toTypedArray()
             val format = DateTimeFormatter.ofPattern(DATE_PATTERN)

@@ -18,12 +18,9 @@ class CampaignsFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val campaignsViewModel =
-            ViewModelProvider(this)[CampaignsViewModel::class.java]
+        val campaignsViewModel = ViewModelProvider(this)[CampaignsViewModel::class.java]
 
         _binding = FragmentCampaignsBinding.inflate(inflater, container, false)
         val root: View = binding.root

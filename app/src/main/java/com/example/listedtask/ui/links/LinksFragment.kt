@@ -20,7 +20,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AnimationUtils
-import android.view.animation.AnticipateOvershootInterpolator
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -236,8 +235,7 @@ class LinksFragment : Fragment() {
                 }
             })
 
-        recentLinksAdapter = RecentLinksAdapter(
-            requireContext(),
+        recentLinksAdapter = RecentLinksAdapter(requireContext(),
             recentLinks,
             object : RecentLinksAdapter.ItemClickListener {
                 override fun onItemClick(smartLink: String?) {
