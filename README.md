@@ -38,6 +38,7 @@ I have used a recycler view and two text views for the tabs as it is showing onl
 - Added copy-to-clipboard functionality in this
 - Added splash screen
 - Added loading
+- added WhatsApp message for "Talk with us"
 
 ## Key Components of Codebase
 The application is built following the MVVM Architecture and the Android Jetpack components in consideration.
