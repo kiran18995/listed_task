@@ -42,12 +42,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.time.LocalDate
+import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 
 private const val uriString: String = "smsto:"
 private const val packageName: String = "com.whatsapp"
 private const val GRADIENT_COLOR = "#84B6FF"
+private const val GOOD_MORNING = "Good morning"
+private const val GOOD_EVENING = "Good evening"
+private const val GOOD_AFTERNOON = "Good afternoon"
+private const val GOOD_NIGHT = "Good night"
 
 class LinksFragment : Fragment() {
 
@@ -69,6 +74,17 @@ class LinksFragment : Fragment() {
         linksViewModel.getData()
         val anim = AnimationUtils.loadAnimation(context, R.anim.slide_up)
         binding.dashboardData.startAnimation(anim)
+
+        val currentTime = LocalTime.now()
+
+        val greeting = when (currentTime.hour) {
+            in 6..11 -> GOOD_MORNING
+            in 12..16 -> GOOD_AFTERNOON
+            in 17..20 -> GOOD_EVENING
+            else -> GOOD_NIGHT
+        }
+
+        binding.greetings.text = greeting
 
         linksViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
