@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_color">#0E6FFF</color>
+    <color name="background_blue">#E8F1FF</color>
+    <color name="gradient_color">#84B6FF</color>
+    <color name="white">#ffffffff</color>
+    <color name="not_select_tab">#999CA0</color>
+</resources>
