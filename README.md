@@ -34,6 +34,10 @@ Link: https://github.com/PhilJay/MPAndroidChart
 <img src="https://github.com/kiran18995/listed_task/assets/48232762/63efb34f-17a4-40f6-95bd-b49197162bc0" alt="My Image" width="200" height="400">
 
 I have used a recycler view and two text views for the tabs as it is showing only 5 lists. If the user wants more user will click on view all links, so I made minimal complexity.
+```diff
+- Added copy-to-clipboard functionality in this
+- Added splash screen
+- Added loading
 
 ## Key Components of Codebase
 The application is built following the MVVM Architecture and the Android Jetpack components in consideration.
