@@ -11,6 +11,8 @@ import kotlinx.coroutines.launch
 class LinksViewModel : ViewModel() {
 
     private val _isLoading = MutableLiveData(false)
+
+    var isLoaded = false
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
@@ -26,13 +28,16 @@ class LinksViewModel : ViewModel() {
 
     fun getData() {
         viewModelScope.launch {
-            _isLoading.value = true
+            if (!isLoaded) {
+                _isLoading.value = true
+            }
             try {
                 _dashBoardData.value = RetrofitInstance.api.getData()
             } catch (e: Exception) {
                 _errorMessage.value = e.message
             } finally {
                 _isLoading.value = false
+                isLoaded = true
             }
         }
     }

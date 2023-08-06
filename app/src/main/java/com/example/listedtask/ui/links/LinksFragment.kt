@@ -45,8 +45,8 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter
 
 
-private const val uriString: String = "smsto:"
-private const val packageName: String = "com.whatsapp"
+private const val URI_STRING: String = "smsto:"
+private const val PACKAGE_NAME: String = "com.whatsapp"
 private const val GRADIENT_COLOR = "#84B6FF"
 private const val GOOD_MORNING = "Good morning"
 private const val GOOD_EVENING = "Good evening"
@@ -71,8 +71,10 @@ class LinksFragment : Fragment() {
         val linksViewModel = ViewModelProvider(this)[LinksViewModel::class.java]
         _binding = FragmentLinksBinding.inflate(inflater, container, false)
         linksViewModel.getData()
-        val anim = AnimationUtils.loadAnimation(context, R.anim.slide_up)
-        binding.dashboardData.startAnimation(anim)
+        if (!linksViewModel.isLoaded) {
+            val anim = AnimationUtils.loadAnimation(context, R.anim.slide_up)
+            binding.dashboardData.startAnimation(anim)
+        }
 
         val currentTime = LocalTime.now()
 
@@ -105,9 +107,9 @@ class LinksFragment : Fragment() {
             binding.socialName.text = dashboard.topSource
             binding.bestTime.text = dashboard.startTime
             binding.talkWithUs.setOnClickListener {
-                val uri = Uri.parse(uriString + dashboard.supportWhatsappNumber)
+                val uri = Uri.parse(URI_STRING + dashboard.supportWhatsappNumber)
                 val intent = Intent(Intent.ACTION_SENDTO, uri)
-                intent.setPackage(packageName)
+                intent.setPackage(PACKAGE_NAME)
                 startActivity(Intent.createChooser(intent, ""))
             }
         }
@@ -235,7 +237,8 @@ class LinksFragment : Fragment() {
                 }
             })
 
-        recentLinksAdapter = RecentLinksAdapter(requireContext(),
+        recentLinksAdapter = RecentLinksAdapter(
+            requireContext(),
             recentLinks,
             object : RecentLinksAdapter.ItemClickListener {
                 override fun onItemClick(smartLink: String?) {
