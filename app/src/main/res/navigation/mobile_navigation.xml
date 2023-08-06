@@ -9,13 +9,13 @@
         android:id="@+id/navigation_links"
         android:name="com.example.listedtask.ui.links.LinksFragment"
         android:label="@string/links"
-        tools:layout="@layout/fragment_courses" />
+        tools:layout="@layout/fragment_links" />
 
     <fragment
         android:id="@+id/navigation_courses"
         android:name="com.example.listedtask.ui.courses.CoursesFragment"
         android:label="@string/courses"
-        tools:layout="@layout/fragment_links" />
+        tools:layout="@layout/fragment_courses" />
 
     <fragment
         android:id="@+id/navigation_campaigns"
