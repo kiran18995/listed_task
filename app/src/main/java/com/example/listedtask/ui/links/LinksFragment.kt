@@ -97,11 +97,14 @@ class LinksFragment : Fragment() {
         }
         lineChart = binding.lineChart
         linksViewModel.dashboard.observe(viewLifecycleOwner) { dashboard ->
+            topLinks.clear()
+            topLinks.addAll(dashboard.data?.topLinks ?: emptyList())
+            topLinksAdapter.notifyDataSetChanged()
+            recentLinks.clear()
+            recentLinks.addAll(dashboard.data?.recentLinks ?: emptyList())
+            recentLinksAdapter.notifyDataSetChanged()
             val overallUrlChart: MutableMap<String, Int> = dashboard.data?.overallUrlChart!!
             loadGraphData(overallUrlChart)
-        }
-
-        linksViewModel.dashboard.observe(viewLifecycleOwner) { dashboard ->
             binding.clickCount.text = dashboard.todayClicks.toString()
             binding.locationName.text = dashboard.topLocation
             binding.socialName.text = dashboard.topSource
@@ -115,15 +118,6 @@ class LinksFragment : Fragment() {
         }
 
         adaptersInit()
-
-        linksViewModel.dashboard.observe(viewLifecycleOwner) { dashboard ->
-            topLinks.clear()
-            topLinks.addAll(dashboard.data?.topLinks ?: emptyList())
-            topLinksAdapter.notifyDataSetChanged()
-            recentLinks.clear()
-            recentLinks.addAll(dashboard.data?.recentLinks ?: emptyList())
-            recentLinksAdapter.notifyDataSetChanged()
-        }
 
         focusChangeListenersInit()
 

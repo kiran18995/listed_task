@@ -8,5 +8,5 @@ import java.io.Serializable
 data class Data(
     @Json(name = "recent_links") var recentLinks: List<RecentLinks> = arrayListOf(),
     @Json(name = "top_links") var topLinks: List<TopLinks> = arrayListOf(),
-    @Json(name = "overall_url_chart") var overallUrlChart: MutableMap<String, Int> = mutableMapOf()
+    @Json(name = "overall_url_chart") var overallUrlChart: MutableMap<String, Int>? = mutableMapOf()
 ) : Serializable
