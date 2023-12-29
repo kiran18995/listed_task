@@ -1,32 +1,40 @@
 package com.example.listedtask.ui.profile
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.listedtask.R
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.listedtask.databinding.FragmentCoursesBinding
 
 class ProfileFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
+    private var _binding: FragmentCoursesBinding? = null
 
-    private lateinit var viewModel: ProfileViewModel
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        val coursesViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
+
+        _binding = FragmentCoursesBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
+        val textView: TextView = binding.textHome
+        coursesViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
+        }
+        return root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }
