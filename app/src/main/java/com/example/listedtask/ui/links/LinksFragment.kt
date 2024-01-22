@@ -15,6 +15,7 @@ import android.graphics.Shader
 import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,9 +53,9 @@ private const val GOOD_MORNING = "Good morning"
 private const val GOOD_EVENING = "Good evening"
 private const val GOOD_AFTERNOON = "Good afternoon"
 private const val GOOD_NIGHT = "Good night"
+private const val TAG = "LinksFragment"
 
 class LinksFragment : Fragment() {
-
     private var _binding: FragmentLinksBinding? = null
     private lateinit var topLinksAdapter: TopLinksAdapter
     private var topLinks = mutableListOf<TopLinks>()
@@ -93,6 +94,7 @@ class LinksFragment : Fragment() {
         linksViewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
             if (errorMessage != null) {
                 Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "Network error message: $errorMessage")
             }
         }
         lineChart = binding.lineChart
